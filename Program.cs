@@ -32,6 +32,7 @@ namespace Binary_tree
                         Console.WriteLine("Неверный формат зарплаты. Попробуйте снова.");
                     }
                 }
+                tree.InOrderTraversal();
                 bool continueSearhSolary = true;
                 while (continueSearhSolary)
                 {
