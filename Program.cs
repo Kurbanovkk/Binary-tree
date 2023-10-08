@@ -1,4 +1,6 @@
-﻿namespace Binary_tree
+﻿using System.ComponentModel.Design;
+
+namespace Binary_tree
 {
     internal class Program
     {
@@ -30,32 +32,33 @@
                         Console.WriteLine("Неверный формат зарплаты. Попробуйте снова.");
                     }
                 }
+                bool continueSearhSolary = true;
+                while (continueSearhSolary)
+                {
+                    Console.Write("\nВведите зарплату для поиска сотрудника: ");
+                    if (int.TryParse(Console.ReadLine(), out int searchSalary))
+                    {
+                        string employee = tree.FindEmployeeBySalary(searchSalary);
+                        Console.WriteLine(employee);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Неверный формат зарплаты.");
+                    }
+                    int choice;
+                    Console.Write("Введите 0 для завершения или 1 для повторного поиска: ");
+                    if (int.TryParse(Console.ReadLine(), out choice))
+                    {
+                        continueSearhSolary = (choice == 1);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Неверный ввод. Завершение программы.");
+                        continueSearhSolary = false;
+                    }
+                }
+                
 
-                Console.WriteLine("\nИмена сотрудников и их зарплаты в порядке возрастания зарплат:");
-                tree.InOrderTraversal();
-
-                Console.Write("\nВведите зарплату для поиска сотрудника: ");
-                if (int.TryParse(Console.ReadLine(), out int searchSalary))
-                {
-                    string employee = tree.FindEmployeeBySalary(searchSalary);
-                    Console.WriteLine(employee);
-                }
-                else
-                {
-                    Console.WriteLine("Неверный формат зарплаты.");
-                }
-
-                Console.Write("Введите 0 для завершения или 1 для повторного поиска: ");
-                int choice;
-                if (int.TryParse(Console.ReadLine(), out choice))
-                {
-                    continueProgram = (choice == 1);
-                }
-                else
-                {
-                    Console.WriteLine("Неверный ввод. Завершение программы.");
-                    continueProgram = false;
-                }
             }
         }
     }

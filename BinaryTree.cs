@@ -3,7 +3,7 @@ namespace Binary_tree
 {
     internal class BinaryTree
     {
-        private Node root;
+        private Node? root;
 
 
         public void Insert(string name, int salary)
